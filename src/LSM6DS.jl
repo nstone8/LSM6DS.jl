@@ -14,8 +14,8 @@ representing the i2c channel to communicate on.
 struct IMU
     sensor #underlying python object
     function IMU(i2c)
-        adafruit_lsm6ds = pyimport("adafruit_lsm6ds")
-        new(adafruit_lsm6ds.LSM6DSOX(i2c))
+        adafruit_lsm6dsox = pyimport("adafruit_lsm6ds.lsm6dsox")
+        new(adafruit_lsm6dsox.LSM6DSOX(i2c))
     end
 end
 
@@ -25,7 +25,7 @@ acceleration(imu)
 ```
 Read the x, y, and z accelerations from an `IMU` in ``m/s^2``
 """
-acceleration(imu) = imu.acceleration
+acceleration(imu) = imu.sensor.acceleration
 
 """
 ```julia
@@ -33,6 +33,6 @@ gyro(imu)
 ```
 Read the x, y, and z angular velocities from an `IMU` in ``radians/s``
 """
-acceleration(imu) = imu.acceleration
+gyro(imu) = imu.sensor.gyro
 
 end # module LSM6DS
